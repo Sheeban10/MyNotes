@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.mynotes.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -65,7 +67,7 @@ class LoginActivity: AppCompatActivity() {
         // Disable the sign-in button
         binding.btnGoogle.isEnabled = false
 
-        // Delay the sign-in logic by 5 seconds
+        // Delay the sign-in logic
         Handler().postDelayed({
             // Stop the Lottie animation
             lottieAnimationView.visibility = View.INVISIBLE
@@ -79,14 +81,6 @@ class LoginActivity: AppCompatActivity() {
         }, 4500) // Delay of 5 seconds (5000 milliseconds)
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        val currentUser: FirebaseUser? = auth.currentUser
-//        if (currentUser != null) {
-//            // User is already signed in
-//            goToMainActivity()
-//        }
-//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -106,39 +100,18 @@ class LoginActivity: AppCompatActivity() {
         }
     }
 
-//    private fun updateUI(account: GoogleSignInAccount?) {
-//        if (account != null) {
-//            // User is signed in, you can perform further actions here
-//            val displayName = account.displayName
-//            val email = account.email
-//
-//            // Sign in with Firebase
-//            val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-//            auth.signInWithCredential(credential)
-//                .addOnCompleteListener(this) { task ->
-//                    if (task.isSuccessful) {
-//                        // Sign in success, update UI with the signed-in user's information
-//                        val user = auth.currentUser
-//                        Toast.makeText(this, "Welcome, ${user?.displayName}!", Toast.LENGTH_SHORT).show()
-//                        goToMainActivity()
-//                    } else {
-//                        // Sign in failed
-//                        Toast.makeText(this, "Sign-in failed", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//        } else {
-//            // User is signed out
-//            Toast.makeText(this, "Sign-in failed", Toast.LENGTH_SHORT).show()
-//        }
-//    }
+
     private fun updateUI(account: GoogleSignInAccount?) {
         if (account != null) {
             // User is signed in, you can perform further actions here
             val displayName = account.displayName
             val email = account.email
+            val photoUrl = account.photoUrl.toString()
+
 
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra(EXTRA_NAME, displayName)
+            intent.putExtra("photoUrl", photoUrl)
             startActivity(intent)
             finish()
 
@@ -149,14 +122,10 @@ class LoginActivity: AppCompatActivity() {
         }
     }
 
-    companion object{
+    companion object {
         const val RC_SIGN_IN = 9001
         const val EXTRA_NAME = "EXTRA NAME"
+        const val PHOTO = "PHOTO URL"
     }
-
-//    private fun goToMainActivity() {
-//        val intent = Intent(this, MainActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
 }
+
