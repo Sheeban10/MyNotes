@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <SearchView
-            android:id="@+id/searchView"
+            android:id="@+id/searchNotes"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginStart="15dp"
@@ -77,13 +77,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView"
-            tools:listitem="@layout/notes">
+            app:layout_constraintTop_toBottomOf="@+id/searchNotes"
+            tools:listitem="@layout/notes"
+            android:padding="10dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton2"
+            android:id="@+id/fbAddNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"

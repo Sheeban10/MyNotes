@@ -39,4 +39,5 @@ class SplashScreen : AppCompatActivity() {
             SPLASH_TIME_OUT
         )
     }
+
 }
