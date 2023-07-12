@@ -15,6 +15,8 @@ class NotesAdapter(private val context : Context, val listener: NotesitemclickLi
         private val NotesList = ArrayList<Note>()
         private val fullList = ArrayList<Note>()
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
             LayoutInflater.from(context).inflate(R.layout.notes, parent, false)

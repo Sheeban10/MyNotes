@@ -1,7 +1,5 @@
 package com.example.mynotes
 
-import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -55,6 +53,7 @@ class LoginActivity: AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+        googleSignInClient.signOut()
 
         auth = FirebaseAuth.getInstance()
 

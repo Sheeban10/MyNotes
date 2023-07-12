@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity(), NotesAdapter.NotesitemclickListener, P
 
         binding.username.text = intent.getStringExtra(EXTRA_NAME)
         binding.logout.setOnClickListener{
+
             auth.signOut()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
