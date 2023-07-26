@@ -18,8 +18,6 @@ import com.google.firebase.ktx.Firebase
 class SplashScreen : AppCompatActivity() {
 
     private val SPLASH_TIME_OUT: Long = 2700
-    private lateinit var auth : FirebaseAuth
-    private lateinit var authStateListener: FirebaseAuth.AuthStateListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
